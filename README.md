@@ -1,2 +1,18 @@
 # ScriptThemAll
-semi-auto install of an palworld server from scratch
+
+## Requirements
+
+- Linux machine or VM
+- git
+
+## Installation
+
+```bash
+git clone https://github.com/Ezeqielle/ScriptThemAll.git
+cd ScriptThemAll
+chmod +x setupPalServer.sh
+```
+
+## Authors
+
+@Ezeqielle
