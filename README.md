@@ -13,6 +13,7 @@ This script is used to install a palworld server and some other tools to manage 
 
 ## Installation
 
+⚠️ Linux only for now ⚠️
 ```bash
 git clone https://github.com/Ezeqielle/ScriptThemAll.git
 cd ScriptThemAll/server
@@ -24,11 +25,11 @@ sudo ./setupPalServer.sh
 
 - [X] Semi-auto install steamcmd and palworld server
 - [X] Install and setup discord bot
-- [ ] Make the two first step for windows (.ps1 script)
-- [ ] Script for backups (bash & ps1)
-- [ ] Script for auto-restart (bash & ps1)
+- [ ] Script for backups
+- [ ] Script for auto-restart
 - [ ] Create cron task to shutdown > backups > restart server (linux only)
 - [ ] Automate server's update
+- [ ] Make the two first step for windows (.ps1 script)
 
 ## Authors
 
