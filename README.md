@@ -4,7 +4,8 @@
 
 This script is used to install a palworld server and some other tools to manage it.
 
-:warning: If you want to install the [discord Bot](https://github.com/Ly-sec/PalBot/tree/main) feature go read more about it on [@Ly-sec](https://github.com/Ly-sec/PalBot/tree/main) github :warning:
+> [!IMPORTANT]
+> If you want to install the [discord Bot](https://github.com/Ly-sec/PalBot/tree/main) feature go read more about it on [@Ly-sec](https://github.com/Ly-sec/PalBot/tree/main) github
 
 ## Requirements
 
@@ -13,7 +14,9 @@ This script is used to install a palworld server and some other tools to manage 
 
 ## Installation
 
-⚠️ Linux only for now ⚠️
+> [!CAUTION]
+> Linux only for now
+
 ```bash
 git clone https://github.com/Ezeqielle/ScriptThemAll.git
 cd ScriptThemAll/server
