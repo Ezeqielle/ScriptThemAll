@@ -3,7 +3,7 @@
 # Name: setupPalServer.sh
 # Description: This script install a Palworld server and all its dependencies
 # Author: Ezeqielle
-# Version: 0.1.2
+# Version: 0.1.3
 # Last updated: 2024-02-07
 # Usage: sudo ./setupPalServer.sh
 
@@ -213,6 +213,15 @@ sed -i "s/\"RE\"/$enable_rcon/" $config_file
 
 # Add the config to the server
 cp PalWorldSettings.ini $config_folder
+
+########### Chmod all script ###########
+chmod +x ./backups/backupServer.sh
+chmod +x ./backups/remoteBackupServer.sh
+chmod +x ./automation/serverMaintenance.sh
+chmod +x ./automation/cronSetup.sh
+
+chmod +x ../bot/setupBot.sh
+
 
 ########### Setup backup ###########
 read -p "Do you want to backup your server to a remote storage ? (yes/no): " setup_backup
