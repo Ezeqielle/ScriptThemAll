@@ -20,9 +20,10 @@ This script is used to install a palworld server and some other tools to manage 
 - Backup script
 - Option to send backup to remote server
 
+</details>
+
 > [!WARNING]
 > To use the remote backup feature you need to have a remote server with ssh access by key not password
-</details>
 
 ## Requirements
 
