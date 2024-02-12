@@ -223,6 +223,7 @@ read -p "Do you want to install the discord bot? (yes/no): " install_bot
 case $install_bot in
     Yes|YES|y|Y)
         echo "Starting installation..."
+        chmod +x ../bot/setupBot.sh
         sudo ../bot/setupBot.sh
         ;;
     no|No|NO|n|N)
