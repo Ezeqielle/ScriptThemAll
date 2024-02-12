@@ -160,3 +160,4 @@ sed -i "s/\"WHITELIST_CHECK_TIME\"/\"$whitelist_check_time\"/g" config.json
 
 ########### Start the bot ###########
 screen -dmS PalBot node .
+echo "Discord Bot is now running"
