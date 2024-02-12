@@ -29,7 +29,7 @@ sudo ./setupPalServer.sh
 - [ ] Script for auto-restart
 - [ ] Create cron task to shutdown > backups > restart server (linux only)
 - [ ] Automate server's update
-- [ ] Make the two first step for windows (.ps1 script)
+- [ ] Make the repo for windows too (.ps1 script)
 
 ## Authors
 
