@@ -274,6 +274,9 @@ case $setup_backup in
         ;;
 esac
 
+########### Setup automation ###########
+# Soon implemented
+
 ########### Start the server ###########
 screen -dmS PalServer palworld
 echo "Palworld server is now running"
