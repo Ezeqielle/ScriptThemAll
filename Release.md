@@ -1,3 +1,9 @@
+# 0.1.2
+
+- Backup script
+- setup remote backup script
+- Option to send backup to remote server
+
 # 0.1.1
 
 - install of screen
