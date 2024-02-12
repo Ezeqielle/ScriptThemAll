@@ -3,7 +3,7 @@
 # Name: setupPalServer.sh
 # Description: This script install a Palworld server and all its dependencies
 # Author: Ezeqielle
-# Version: 0.1.0
+# Version: 0.1.1
 # Last updated: 2024-02-07
 # Usage: sudo ./setupPalServer.sh
 
@@ -213,3 +213,23 @@ sed -i "s/\"RE\"/$enable_rcon/" $config_file
 
 # Add the config to the server
 cp PalWorldSettings.ini $config_folder
+
+########### Start the server ###########
+screen -dmS PalServer palworld
+echo "Palworld server is now running"
+
+########### Install bot ###########
+read -p "Do you want to install the discord bot? (yes/no): " install_bot
+case $install_bot in
+    Yes|YES|y|Y)
+        echo "Starting installation..."
+        sudo ./bot/setupBot.sh
+        ;;
+    no|No|NO|n|N)
+        echo "Exiting..."
+        exit
+        ;;
+    *)
+        echo "Invalid input. Please enter 'yes' or 'no'."
+        ;;
+esac

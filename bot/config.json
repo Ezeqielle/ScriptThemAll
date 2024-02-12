@@ -1,0 +1,11 @@
+{
+  "token": "BOT_TOKEN",
+  "host": "SERVER_IP",
+  "port": "SERVER_PORT",
+  "rcon_port": "RCON_PORT",
+  "rcon_password": "RCON_PASSWORD",
+  "rcon_role": "RCON_ROLE",
+  "whitelist_role": "WHITELIST_ROLE",
+  "whitelist_enabled": "WHITELIST_CHECK",
+  "whitelist_time": "WHITELIST_CHECK_TIME"
+}
