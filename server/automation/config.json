@@ -1,3 +1,6 @@
 {
-    "shutdown_timer": 300
+    "shutdown_timer": 300,
+    "arrcon_password": "password",
+    "arrcon_port": 25575,
+    "arrcon_host": "localhost"
 }

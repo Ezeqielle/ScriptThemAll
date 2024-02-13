@@ -7,16 +7,23 @@
 # Last updated: 2024-02-12
 # Usage: sudo ./serverMaintenance.sh
 
+########### Setup vars ###########
+arrcon_port=$(jq -r '.arrcon_port' config.json)
+arrcon_password=$(jq -r '.arrcon_password' config.json)
+arrcon_host=$(jq -r '.arrcon_host' config.json)
+shutdown_timer=$(jq -r '.shutdown_timer' config.json)
+
 ########### Update the server ###########
 #Soon implemented
 
 ########### Shutdown the server ###########
-#Soon implemented (using rcon to shutdown the server)
+echo "Shutting down the server..."
+echo "Shutdown ${shutdown_timer} The_server_will_shutdown_in_${shutdown_timer}_seconds" | ARRCON -H $arrcon_host -P $arrcon_port -p $arrcon_password
 
 ########### Backup the server data ###########
-# run ../backups/backupServer.sh
-../backups/backupServer.sh
+./../backups/backupServer.sh
 
 ########### Start the server ###########
-#screen -dmS PalServer palworld
-#echo "Palworld server is now running"
+echo "Starting the server..."
+screen -dmS PalServer palworld
+echo "Palworld server is now running"

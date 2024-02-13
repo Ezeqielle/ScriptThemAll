@@ -4,7 +4,7 @@
 # Description: This script install a Palworld server and all its dependencies
 # Author: Ezeqielle
 # Version: 0.1.3
-# Last updated: 2024-02-07
+# Last updated: 2024-02-13
 # Usage: sudo ./setupPalServer.sh
 
 ########### Check if the script is run as root ###########
@@ -48,8 +48,7 @@ cp ~/Steam/steamapps/common/Steamworks\ SDK\ Redist/linux64/steamclient.so ~/.st
 steamcmd +login anonymous +app_update 2394010 +quit
 
 ########### Config the server ###########
-# Configure server network
-## check if a string is a valid IPv4 address
+# Configure server network settings
 is_valid_ipv4() {
     local ip="$1"
     local ipv4_regex="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
@@ -185,30 +184,17 @@ config_folder=~/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer
 config_file=./PalWorldSettings.ini
 
 # Implement config
-## ADP => admin password
 sed -i "s/ADP/$server_admin_password/" $config_file
-## SRP => server password
 sed -i "s/SRP/$server_password/" $config_file
-## SP => server port => remove ""
 sed -i "s/\"SP\"/$server_port/" $config_file
-## SIP => server ip
 sed -i "s/SIP/$ip/" $config_file
-## SRD => server description
 sed -i "s/SRD/$server_description/" $config_file
-## SRN => server name
 sed -i "s/SRN/$server_name/" $config_file
-## MP => max players => remove ""
 sed -i "s/\"MP\"/$server_max_players/" $config_file
-## DP => death penalty => remove ""
 sed -i "s/\"DP\"/$death_penalty/" $config_file
-## XP => xp rate => remove ""
 sed -i "s/\"XP\"/$xp_rate/" $config_file
-## EMHT => egg max hatch time => remove ""
 sed -i "s/\"EMHT\"/$egg_max_hatch_time/" $config_file
-
-## RP => rcon port => remove ""
 sed -i "s/\"RP\"/$rcon_port/" $config_file
-## RE => rcon enable => remove ""
 sed -i "s/\"RE\"/$enable_rcon/" $config_file
 
 # Add the config to the server
@@ -219,9 +205,6 @@ chmod +x ./backups/backupServer.sh
 chmod +x ./backups/remoteBackupServer.sh
 chmod +x ./automation/serverMaintenance.sh
 chmod +x ./automation/cronSetup.sh
-
-chmod +x ../bot/setupBot.sh
-
 
 ########### Setup backup ###########
 read -p "Do you want to backup your server to a remote storage ? (yes/no): " setup_backup
@@ -274,10 +257,37 @@ case $setup_backup in
         ;;
 esac
 
-########### Setup automation ###########
-# Soon implemented
+########### Setup maintenance automation ###########
+# Setup ARRCON
+read -p "Do you want to setup the server maintenance automation ? (yes/no): " setup_automation
+case $setup_automation in
+    yes|Yes|YES|y|Y)
+        echo "Setting up automation..."
+        file_path="/usr/local/bin/ARRCON"
+        if [ -e "$file_path" ]; then
+            echo "ARRCON is already installed in /usr/local/bin."
+        else
+            echo "ARRCON is not found in /usr/local/bin."
+            echo "Installing ARRCON..."
+            wget https://github.com/radj307/ARRCON/releases/download/3.3.7/ARRCON-3.3.7-Linux.zip -P /tmp
+            unzip /tmp/ARRCON-3.3.7-Linux.zip -d /usr/local/bin
+        fi
+        ;;
+    no|No|NO|n|N)
+        break
+        ;;
+    *)
+        echo "Invalid input. Please enter 'yes' or 'no'."
+        ;;
+esac
+
+########### Setup Alias ###########
+echo "Setting up alias..."
+echo "alias palworld=$HOME/Steam/steamapps/common/PalServer/PalServer.sh -port=${server_port} -players=${server_max_players} -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS" >> ~/.bashrc
+bash
 
 ########### Start the server ###########
+echo "Starting the server..."
 screen -dmS PalServer palworld
 echo "Palworld server is now running"
 

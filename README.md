@@ -1,5 +1,8 @@
 # ScriptThemAll
 
+> [!NOTE]
+> This repo is actually a work in progress, so if you find any bug or have any suggestion please open an issue or a pull request
+
 ## Description
 
 This script is used to install a palworld server and some other tools to manage it.

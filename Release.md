@@ -7,6 +7,7 @@
   - Shutdown the server
   - Backup the server
   - Update the server
+- Clean up the code
 
 ## 0.1.2
 
