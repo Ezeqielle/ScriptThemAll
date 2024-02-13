@@ -1,11 +1,11 @@
 #! /bin/bash
 
-# Name: serverMaintenance.sh
+# Name: serverUpdates.sh
 # Description: This script will do the maintenance of the Palworld server that includes updating the server, restarting the server and backing up its data
 # Author: Ezeqielle
 # Version: 0.0.1
 # Last updated: 2024-02-12
-# Usage: sudo ./serverMaintenance.sh
+# Usage: sudo ./serverUpdates.sh
 
 ########### Setup vars ###########
 arrcon_port=$(jq -r '.arrcon_port' config.json)
@@ -20,6 +20,9 @@ echo "Shutdown ${shutdown_timer} The_server_will_shutdown_in_${shutdown_timer}_s
 
 ########### Backup the server data ###########
 ./../backups/backupServer.sh
+
+########### Update the server ###########
+#Soon implemented
 
 ########### Start the server ###########
 echo "Starting the server..."

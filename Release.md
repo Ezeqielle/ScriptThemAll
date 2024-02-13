@@ -8,6 +8,7 @@
   - Backup the server
   - Update the server
 - Clean up the code
+- Automate the server's update
 
 ## 0.1.2
 

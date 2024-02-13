@@ -66,8 +66,8 @@ sudo ./setupPalServer.sh
 - [X] Semi-auto install steamcmd and palworld server
 - [X] Install and setup discord bot
 - [X] Script for backups
-- [x] Create cron task to shutdown > backups > restart server (linux only)
-- [ ] Automate server's update
+- [X] Create cron task to shutdown > backups > restart server (linux only)
+- [X] Automate server's update
 - [ ] Script for auto-restart
 - [ ] Make the repo for windows too (.ps1 script)
 
