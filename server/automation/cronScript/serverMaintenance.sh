@@ -8,15 +8,12 @@
 # Usage: sudo ./serverMaintenance.sh
 
 ########### Setup vars ###########
-arrcon_port=$(jq -r '.arrcon_port' config.json)
-arrcon_password=$(jq -r '.arrcon_password' config.json)
-arrcon_host=$(jq -r '.arrcon_host' config.json)
-shutdown_timer=$(jq -r '.shutdown_timer' config.json)
+source "$(dirname "$0")/../../config.sh"
 
 ########### Shutdown the server ###########
 echo "Shutting down the server..."
-echo "Save" | ARRCON -H $arrcon_host -P $arrcon_port -p $arrcon_password
-echo "Shutdown ${shutdown_timer} The_server_will_shutdown_in_${shutdown_timer}_seconds" | ARRCON -H $arrcon_host -P $arrcon_port -p $arrcon_password
+echo "Save" | $ARRCON_CONNECT
+echo "Shutdown ${SHUTDOWN_TIMER} The_server_will_shutdown_in_${SHUTDOWN_TIMER}_seconds" | $ARRCON_CONNECT
 
 ########### Backup the server data ###########
 ./../backups/backupServer.sh
