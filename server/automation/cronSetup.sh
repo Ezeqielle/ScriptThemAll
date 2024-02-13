@@ -8,7 +8,7 @@
 # Usage: sudo ./cronSetup.sh
 
 ########### Setup vars ###########
-server_maintenance="/home/$USER/ScriptThemAll/Server/Automation/serverMaintenance.sh"
+server_maintenance="$HOME/ScriptThemAll/Server/Automation/serverMaintenance.sh"
 
 ########### Setup cron schedule ###########
 while true; do   
@@ -23,9 +23,9 @@ done
 # Check if the cron job already exists
 if crontab -l | grep -q "$server_maintenance"; then
     echo "Cron job already exists. Modifying..."
-    crontab -l | grep -v "$server_maintenanace" | crontab -
+    crontab -l | grep -v "$server_maintenance" | crontab -
 fi
 # Add the cron job with the specified schedule
 echo "Adding new cron job..."
-(crontab -l ; echo "$cron_schedule $server_maintenanace") | crontab -
+(crontab -l ; echo "$cron_schedule $server_maintenance") | crontab -
 echo "Cron job added successfully."
