@@ -3,7 +3,7 @@
 ## 0.1.3
 
 - Add chmod for all the other scripts
-- Automation of the server setup (cron task)
+- Automation of the server maintenance (cron task)
   - Shutdown the server
   - Backup the server
   - Update the server
