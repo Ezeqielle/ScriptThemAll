@@ -16,18 +16,31 @@ then
 fi
 
 ########### Define steam user password ###########
-read -s -p "Enter the password for the steam user: " password
-echo
-read -s -p "Confirm the password: " confirm_password
-echo
-if [ "$password" != "$confirm_password" ]; then
-    echo "Passwords do not match"
-    exit
-fi
+
 
 ########### Install create steam user ###########
-adduser steam
-usermod -aG sudo steam
+username="steam"
+if id "$username" &>/dev/null; then
+    echo "User $username exists."
+    usermod -aG sudo steam
+    read -p -s "Enter the password for the steam user: " password
+    echo
+else
+    echo "User $username does not exist."
+    echo "Creating the user $username..."
+    while [ "$password" != "$confirm_password" ]; do
+        read -s -p "Enter the password for the steam user: " password
+        echo
+        read -s -p "Confirm the password: " confirm_password
+        echo
+        if [ "$password" != "$confirm_password" ]; then
+            echo "Passwords do not match"
+            exit
+        fi
+    done
+    adduser steam
+    usermod -aG sudo steam
+fi
 su -u steam -c "echo steam:$password | chpasswd"
 cd /home/steam
 
