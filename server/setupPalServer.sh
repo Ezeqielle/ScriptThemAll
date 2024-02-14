@@ -214,10 +214,9 @@ sed -i "s/\"RE\"/$enable_rcon/" $config_file
 cp PalWorldSettings.ini $config_folder
 
 ########### Chmod all script ###########
-chmod +x ./backups/backupServer.sh
-chmod +x ./backups/remoteBackupServer.sh
-chmod +x ./automation/serverMaintenance.sh
-chmod +x ./automation/cronSetup.sh
+directory="$(dirname "$0")"
+exclude_file="config.sh"
+find "$directory" -type f -name '*.sh' ! -name "$exclude_file" -exec chmod +x {} +
 
 ########### Setup backup ###########
 read -p -r "Do you want to backup your server to a remote storage ? (yes/no): " setup_backup
