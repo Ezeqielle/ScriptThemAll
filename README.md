@@ -45,9 +45,6 @@ This script is used to install a palworld server and some other tools to manage 
 
 ## Installation
 
-> [!CAUTION]
-> This installation script is linux only for now
-
 ```bash
 git clone https://github.com/Ezeqielle/ScriptThemAll.git
 cd ScriptThemAll/server
