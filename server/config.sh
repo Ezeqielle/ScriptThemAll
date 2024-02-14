@@ -16,3 +16,6 @@ ARRCON_CONNECT="ARRCON -H $ARRCON_HOST -P $ARRCON_PORT -p $ARRCON_PASSWORD"
 
 ########### Check ram threshold ###########
 RAM_THRESHOLD=75
+
+########### Check new server update ###########
+LAST_UPDATE=""
