@@ -8,7 +8,7 @@
 # Usage: sudo ./checkProcRunning.sh
 
 # Define the process name
-process_name="your_process_name"
+process_name="PalServer.sh"
 
 if pgrep "$process_name" >/dev/null; then
     echo "The process $process_name is running."
