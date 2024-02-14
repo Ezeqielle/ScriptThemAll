@@ -33,10 +33,11 @@ function updateServer() {
 ########### Check new server update ###########
 RSS_FEED_URL="https://steamdb.info/api/PatchnotesRSS/?appid=2394010"
 rss_content=$(curl -s "$RSS_FEED_URL")
-new_build_number=$(echo "$rss_content" | grep -o '<guid[^>]*>build#[0-9]*' | sed 's/<guid[^>]*>build#\(.*\)<\/guid>/\1/')
+new_build_number=$(echo "$rss_content" | grep -o '<guid[^>]*>build#[0-9]*' | sed 's/<[^>]*>//g' | sed 's/build#//' | head -n 1)
 if [ -n "$new_build_number" ] && [ "$new_build_number" -gt "$LAST_UPDATE" ]; then
     echo "New build number found: $new_build_number"
-    sed -i "s/^LAST_UPDATE=.*/LAST_UPDATE=\"$new_build_number\"/" ../../config.sh
+    echo "Updating LAST_UPDATE from $LAST_UPDATE to $new_build_number"
+    sed -i "s/^LAST_UPDATE=.*/LAST_UPDATE=$new_build_number/" ../../config.sh
     updateServer
 else
     echo "No new build number found or same as last update."
