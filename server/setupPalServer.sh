@@ -35,7 +35,7 @@ cd /home/steam
 sudo add-apt-repository multiverse
 sudo dpkg --add-architecture i386
 sudo apt update
-sudo apt install steamcmd
+sudo apt install steamcmd screen -y
 /usr/games/steamcmd +login anonymous +quit
 export PATH="$PATH:/usr/games"
 
@@ -212,10 +212,10 @@ case $setup_backup in
     yes|Yes|YES|y|Y)
         echo "Checking if dependencies are installed..."
         if ! command -v jq &> /dev/null; then
-            apt install jq
+            apt install jq -y
         fi
         if ! command -v sshpass &> /dev/null; then
-            apt install sshpass
+            apt install sshpass -y
         fi
         echo "all dependencies are installed"
         echo "Setting up backup..."
