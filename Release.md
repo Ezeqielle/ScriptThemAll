@@ -1,5 +1,9 @@
 # Release notes
 
+## 0.1.4
+
+- Automatically resart the server after a crash
+
 ## 0.1.3
 
 - Add chmod for all the other scripts

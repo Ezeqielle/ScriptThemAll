@@ -45,6 +45,12 @@ This script is used to install a palworld server and some other tools to manage 
 
 ## Installation
 
+>[!CAUTION]
+> Don't run the script as root, run it with your user and use sudo
+
+> [!NOTE]
+> All automation part can be activate later by running the **activate** script for this feature *(take a look at the [FAQ](#faq) for more info)*
+
 ```bash
 git clone https://github.com/Ezeqielle/ScriptThemAll.git
 cd ScriptThemAll/server
@@ -52,22 +58,22 @@ chmod +x setupPalServer.sh
 sudo ./setupPalServer.sh
 ```
 
-> [!NOTE]
-> When you enable the remote backup feature the script will run the first backup and send it to the remote server then **for now** you will need to manually run the script for the next backups
-> the script is here: `~/ScriptThemAll/server/backup/backupServer.sh`
-
 <details>
 <summary><b><h2>FAQ<h2></b></summary>
 
 - I don't have setup the remote backup feature, how can I do it?
 
-> You need to edit run the remote backup script that can be found here
-> `~/ScriptThemAll/server/backup/remoteBackupSetup.sh`
+> You need to run the remote backup script that can be found here
+> `~/ScriptThemAll/server/backup/activateRemoteBackupServer.sh`
 
 - I don't have a remote server, how can I use the backup feature?
 
-> You can use the local backup feature that is already implemented in the script that can be found here
-> `~/ScriptThemAll/server/backup/backupServer.sh`
+> Don't worry, you can use the local backup feature that is implemented during the installation
+
+- I don't have setup the auto-update feature, how can I do it?
+
+> You just need to run the activateAutoUpdate script that can be found here
+> `~/ScriptThemAll/server/automation/cronScript/activateAutoUpdate.sh`
 
 </details>
 
@@ -84,7 +90,7 @@ sudo ./setupPalServer.sh
 
 ## Credits
 
-- PalBot [@Ly-sec](https://github.com/Ly-sec/PalBot/tree/main)
+- PalBot [@Ly-sec](https://github.com/Ly-sec/PalBot)
 - YAPS [@guzlad](https://github.com/guzlad/YAPS)
 - ARRCON [@radj307](https://github.com/radj307/ARRCON)
 

@@ -48,7 +48,7 @@ cd /home/steam
 sudo add-apt-repository multiverse
 sudo dpkg --add-architecture i386
 sudo apt update
-sudo apt install steamcmd screen -y
+sudo apt install steamcmd screen htop wget unzip -y
 /usr/games/steamcmd +login anonymous +quit
 export PATH="$PATH:/usr/games"
 
@@ -268,7 +268,7 @@ case $setup_backup in
         sed -i "s/RMP/$remote_path/" ../backups/config.json
         ;;
     no|No|NO|n|N)
-        echo "Backup will not be setup."
+        echo "Remote backup will not be setup."
         ;;
     *)
         echo "Invalid input. Please enter 'yes' or 'no'."
@@ -296,7 +296,7 @@ case $setup_automation in
         sed -i "s/25575/$rcon_port/" ./config.sh
         ;;
     no|No|NO|n|N)
-        echo "ARRCON will not be setup"
+        echo "Auto maintenance will not be setup"
         ;;
     *)
         echo "Invalid input. Please enter 'yes' or 'no'."
