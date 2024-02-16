@@ -6,9 +6,24 @@
 ![Debian](https://img.shields.io/badge/Debian-A81D33?style=flat&logo=debian&logoColor=white)
 
 > [!NOTE]
-> This repo is actually a work in progress, so if you find any bug or have any suggestion please open an issue or a pull request.
-> 
+> This repo is actually a work in progress, so if you find any bug or have any suggestion please open an issue or a pull request *(please comment your code)*
+>
 > This installation script is linux only, if you want a windows version check this repo [YAPS](https://github.com/guzlad/YAPS) made by [@guzlad](https://github.com/guzlad)
+
+<details>
+<summary><b><h2>Table of content<h2></b></summary>
+
+- [ScriptThemAll](#scriptthemall)
+  - [Description](#description)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [TODO](#todo)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Release notes](#release-notes)
+  - [Authors](#authors)
+
+</details>
 
 ## Description
 
@@ -32,6 +47,10 @@ This script is used to install a palworld server and some other tools to manage 
 - Auto-update script
 - Monitoring script for Ram usage
 - Auto-restart script in case of crash
+- hard coded cron task for:
+  - update the server
+  - ram threshold
+  - auto-restart in case of crash
 
 </details>
 
@@ -42,6 +61,7 @@ This script is used to install a palworld server and some other tools to manage 
 
 - Linux machine or VM (debian or ubuntu)
 - git
+- user account with sudo privileges
 
 ## Installation
 
@@ -87,12 +107,21 @@ sudo ./setupPalServer.sh
 - [ ] Script for auto-restart
 - [X] Monitoring of the Ram usage
 - [ ] ~~Make the repo for windows too (.ps1 script)~~ (Check this repo for windows [YAPS](https://github.com/guzlad/YAPS))
+- [ ] Log system for the scripts cron task
 
 ## Credits
 
 - PalBot [@Ly-sec](https://github.com/Ly-sec/PalBot)
 - YAPS [@guzlad](https://github.com/guzlad/YAPS)
 - ARRCON [@radj307](https://github.com/radj307/ARRCON)
+
+## License
+
+[MIT](./LICENSE)
+
+## Release notes
+
+[Release notes](./Release.md)
 
 ## Authors
 
