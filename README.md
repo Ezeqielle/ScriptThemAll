@@ -107,7 +107,7 @@ sudo ./setupPalServer.sh
 - [ ] Script for auto-restart
 - [X] Monitoring of the Ram usage
 - [ ] ~~Make the repo for windows too (.ps1 script)~~ (Check this repo for windows [YAPS](https://github.com/guzlad/YAPS))
-- [ ] Log system for the scripts cron task
+- [X] Log system for the scripts cron task
 
 ## Credits
 
