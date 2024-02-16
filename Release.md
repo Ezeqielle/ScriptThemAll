@@ -3,6 +3,8 @@
 ## 0.1.4
 
 - Automatically resart the server after a crash
+- Log system for the scripts cron task
+- Monitoring of the Ram usage
 
 ## 0.1.3
 

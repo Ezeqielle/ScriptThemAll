@@ -14,4 +14,6 @@ if pgrep "$process_name" >/dev/null; then
     echo "The process $process_name is running."
 else
     echo "The process $process_name is not running."
+    echo "Restarting the server..."
+    # Restart the server in a screen session
 fi
