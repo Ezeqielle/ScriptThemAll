@@ -12,10 +12,12 @@ cron_script_dir="$HOME/ScriptThemAll/Server/Automation/cronScript"
 server_maintenance="$cron_script_dir/serverMaintenance.sh"
 check_ram="$cron_script_dir/checkRam.sh"
 check_updates="$cron_script_dir/checkUpdates.sh"
+check_process="$cron_script_dir/checkProcRunning.sh"
 
 ########### Cron job hardcoded ###########
 echo "*/5 * * * * $check_ram" | crontab -
 echo "0 0 */2 * * $check_updates" | crontab -
+echo "*/5 * * * * $check_process" | crontab -
 
 ########### Setup cron schedule ###########
 while true; do   

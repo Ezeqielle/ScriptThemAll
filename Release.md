@@ -1,5 +1,10 @@
 # Release notes
 
+## 0.1.4
+
+- Log system for the scripts cron task
+- Monitoring of the Ram usage
+
 ## 0.1.3
 
 - Add chmod for all the other scripts

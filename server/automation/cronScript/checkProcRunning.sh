@@ -7,11 +7,16 @@
 # Last updated: 2024-02-13
 # Usage: sudo ./checkProcRunning.sh
 
-# Define the process name
-process_name="your_process_name"
+########### Implement the log file ###########
+source "$(dirname "$0")/../../log.sh"
+
+########### Define the process name ###########
+process_name="PalServer.sh"
 
 if pgrep "$process_name" >/dev/null; then
-    echo "The process $process_name is running."
+    logMessage "The process $process_name is running."
 else
-    echo "The process $process_name is not running."
+    logMessage "The process $process_name is not running."
+    logMessage "Restarting the server..."
+    # Restart the server in a screen session
 fi

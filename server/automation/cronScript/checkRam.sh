@@ -15,13 +15,16 @@ ram_data() {
 ########### Setup vars ###########
 source "$(dirname "$0")/../../config.sh"
 
+########### Implement the log file ###########
+source "$(dirname "$0")/../../log.sh"
+
 ########### Check memory usage ###########
 ram_usage=$(ram_data)
 ram_usage_num=$(echo "$ram_usage "| awk '{print int($1)}')
 if (( ram_usage_num > RAM_THRESHOLD )); then
-    echo "Ram usage exceeds threshold. Sending ARRCON commands to reboot the server..."
-    echo "Shutdown $SHUTDOWN_TIMER The_system_has_exceeded_${RAM_THRESHOLD}_ram__usage_will_reboot_in_5_min" | $ARRCON_CONNECT
+    logMessage "Ram usage exceeds threshold. Sending ARRCON commands to reboot the server..."
+    logMessage "Shutdown $SHUTDOWN_TIMER The_system_has_exceeded_${RAM_THRESHOLD}_ram__usage_will_reboot_in_5_min" | $ARRCON_CONNECT
 else
-    echo "Ram usage is below 80%. Current usage: $ram_usage%"
-    echo "Restart is not needed at this time"
+    logMessage "Ram usage is below 80%. Current usage: $ram_usage%"
+    logMessage "Restart is not needed at this time"
 fi

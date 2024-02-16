@@ -12,19 +12,22 @@ palworld=~/Steam/steamapps/common/PalServer/Pal/Saved
 backups=$HOME/backups
 date=$(date +%Y%m%d_%H%M%S)
 
+########### Implement the log file ###########
+source "$(dirname "$0")/../../log.sh"
+
 ########### Archives server vars###########
 source "$(dirname "$0")/../config.sh"
 
 ########### Backup server local###########
-echo "Starting backup..."
+logMessage "Starting backup..."
 tar -czf "${backups}/backup_${date}.tar.gz" -C "${palworld}" .
-echo "Backup of ${palworld} completed at ${backups}/backup_${date}.tar.gz"
+logMessage "Backup of ${palworld} completed at ${backups}/backup_${date}.tar.gz"
 
 ########### Achive remotely ###########
 if [ "$REMOTE_ENABLED" = "EN" ]; then
-    echo "Start sending the backup to the remote server..."
+    logMessage "Start sending the backup to the remote server..."
     scp -i "$PRIVATE_KEY" "$backups/backup_${date}.tar.gz" "$REMOTE_USERNAME@$REMOTE_HOST:$REMOTE_PATH"
 else
-    echo "Remote backup is not enabled. Exiting..."
+    logMessage "Remote backup is not enabled. Exiting..."
     exit
 fi

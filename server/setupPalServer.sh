@@ -48,7 +48,7 @@ cd /home/steam
 sudo add-apt-repository multiverse
 sudo dpkg --add-architecture i386
 sudo apt update
-sudo apt install steamcmd screen -y
+sudo apt install steamcmd screen htop wget unzip -y
 /usr/games/steamcmd +login anonymous +quit
 export PATH="$PATH:/usr/games"
 
@@ -214,95 +214,97 @@ sed -i "s/\"RE\"/$enable_rcon/" $config_file
 cp PalWorldSettings.ini $config_folder
 
 ########### Chmod all script ###########
-chmod +x ./backups/backupServer.sh
-chmod +x ./backups/remoteBackupServer.sh
-chmod +x ./automation/serverMaintenance.sh
-chmod +x ./automation/cronSetup.sh
+directory="$(dirname "$0")"
+exclude_file="config.sh"
+find "$directory" -type f -name '*.sh' ! -name "$exclude_file" -exec chmod +x {} +
 
 ########### Setup backup ###########
-read -p -r "Do you want to backup your server to a remote storage ? (yes/no): " setup_backup
-case $setup_backup in
-    yes|Yes|YES|y|Y)
-        echo "Checking if dependencies are installed..."
-        if ! command -v jq &> /dev/null; then
-            apt install jq -y
-        fi
-        if ! command -v sshpass &> /dev/null; then
-            apt install sshpass -y
-        fi
-        echo "all dependencies are installed"
-        echo "Setting up backup..."
-        if [ -d "$HOME/backups" ]; then
-            echo "The backups folder already exists"
-        else
-            echo "Creating the backups folder..."
-            mkdir "$HOME"/backups
-        fi
-        while true; do
-            read -p -r"Enter the remote username: " remote_username
-            if [ -n "$remote_username" ]; then
-                break
+while true; do
+    read -p -r "Do you want to backup your server to a remote storage ? (yes/no): " setup_backup
+    case $setup_backup in
+        yes|Yes|YES|y|Y)
+            echo "Checking if dependencies are installed..."
+            if ! command -v jq &> /dev/null; then
+                apt install jq -y
             fi
-        done
-        while true; do
-            read -p -s -r "Enter the path to the private key for ssh: " private_key
-            if [ -n "$private_key" ]; then
-                break
+            if ! command -v sshpass &> /dev/null; then
+                apt install sshpass -y
             fi
-        done
-        while true; do
-            read -p -r "Enter the remote host IP: " remote_host
-            if [ -n "$remote_host" ]; then
-                break
+            echo "all dependencies are installed"
+            echo "Setting up backup..."
+            if [ -d "$HOME/backups" ]; then
+                echo "The backups folder already exists"
+            else
+                echo "Creating the backups folder..."
+                mkdir "$HOME"/backups
             fi
-        done
-        while true; do
-            read -p -r "Enter remote Path" remote_path
-            if [ -n "$remote_path" ]; then
-                break
-            fi
-        done
-        sed -i "s/DIS/EN/" ../backups/config.json
-        sed -i "s/RMU/$remote_username/" ../backups/config.json
-        sed -i "s/PRK/$private_key/" ../backups/config.json
-        sed -i "s/RMH/$remote_host/" ../backups/config.json
-        sed -i "s/RMP/$remote_path/" ../backups/config.json
-        ;;
-    no|No|NO|n|N)
-        echo "Backup will not be setup."
-        ;;
-    *)
-        echo "Invalid input. Please enter 'yes' or 'no'."
-        ;;
-esac
+            while true; do
+                read -p -r"Enter the remote username: " remote_username
+                if [ -n "$remote_username" ]; then
+                    break
+                fi
+            done
+            while true; do
+                read -p -s -r "Enter the path to the private key for ssh: " private_key
+                if [ -n "$private_key" ]; then
+                    break
+                fi
+            done
+            while true; do
+                read -p -r "Enter the remote host IP: " remote_host
+                if [ -n "$remote_host" ]; then
+                    break
+                fi
+            done
+            while true; do
+                read -p -r "Enter remote Path" remote_path
+                if [ -n "$remote_path" ]; then
+                    break
+                fi
+            done
+            sed -i "s/DIS/EN/" ../backups/config.json
+            sed -i "s/RMU/$remote_username/" ../backups/config.json
+            sed -i "s/PRK/$private_key/" ../backups/config.json
+            sed -i "s/RMH/$remote_host/" ../backups/config.json
+            sed -i "s/RMP/$remote_path/" ../backups/config.json
+            ;;
+        no|No|NO|n|N)
+            echo "Remote backup will not be setup."
+            ;;
+        *)
+            echo "Invalid input. Please enter 'yes' or 'no'."
+            ;;
+    esac
+done
 
 ########### Setup maintenance automation ###########
-# Setup ARRCON
-read -p -r "Do you want to setup the server maintenance automation ? (yes/no): " setup_automation
-case $setup_automation in
-    yes|Yes|YES|y|Y)
-        echo "Setting up automation..."
-        file_path="/usr/local/bin/ARRCON"
-        if [ -e "$file_path" ]; then
-            echo "ARRCON is already installed in /usr/local/bin."
-        else
-            echo "ARRCON is not found in /usr/local/bin."
-            echo "Installing ARRCON..."
-            wget https://github.com/radj307/ARRCON/releases/download/3.3.7/ARRCON-3.3.7-Linux.zip -P /tmp
-            unzip /tmp/ARRCON-3.3.7-Linux.zip -d /usr/local/bin
-        fi
-        # Setup cron
-        # Setup config file for RCON
-        sed -i "s/password/$server_admin_password/" ./config.sh
-        sed -i "s/25575/$rcon_port/" ./config.sh
-        ;;
-    no|No|NO|n|N)
-        echo "ARRCON will not be setup"
-        ;;
-    *)
-        echo "Invalid input. Please enter 'yes' or 'no'."
-        ;;
-esac
+while true; do
+    read -p -r "Do you want to setup the server maintenance automation ? (yes/no): " setup_automation
+    case $setup_automation in
+        yes|Yes|YES|y|Y)
+            echo "Setting up automation..."
+            file_path="/usr/local/bin/ARRCON"
+            if [ -e "$file_path" ]; then
+                echo "ARRCON is already installed in /usr/local/bin."
+            else
+                echo "ARRCON is not found in /usr/local/bin."
+                echo "Installing ARRCON..."
+                wget https://github.com/radj307/ARRCON/releases/download/3.3.7/ARRCON-3.3.7-Linux.zip -P /tmp
+                unzip /tmp/ARRCON-3.3.7-Linux.zip -d /usr/local/bin
+            fi
+            # Setup cron
+            # Setup config file for RCON
+            sed -i "s/password/$server_admin_password/" ./config.sh
+            sed -i "s/25575/$rcon_port/" ./config.sh
+            ;;
+        no|No|NO|n|N)
+            echo "Auto maintenance will not be setup"
+            ;;
+        *)
+            echo "Invalid input. Please enter 'yes' or 'no'."
+            ;;
+    esac
+done
 
 ########### Setup Alias ###########
 echo "Setting up alias..."
