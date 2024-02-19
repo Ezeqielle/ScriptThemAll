@@ -15,9 +15,6 @@ then
 	exit
 fi
 
-########### Define steam user password ###########
-
-
 ########### Install create steam user ###########
 username="steam"
 if id "$username" &>/dev/null; then
@@ -40,7 +37,7 @@ else
     adduser steam
     usermod -aG sudo steam
 fi
-su -u steam
+su -l steam
 cd /home/steam
 
 ########### Install steamcmd ###########
@@ -299,6 +296,7 @@ while true; do
             ;;
         no|No|NO|n|N)
             echo "Auto maintenance will not be setup"
+            break
             ;;
         *)
             echo "Invalid input. Please enter 'yes' or 'no'."
