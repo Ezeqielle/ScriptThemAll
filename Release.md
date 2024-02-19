@@ -1,5 +1,9 @@
 # Release notes
 
+# 0.1.4.1
+
+- Add more log to the cron task
+
 ## 0.1.4
 
 - Log system for the scripts cron task
