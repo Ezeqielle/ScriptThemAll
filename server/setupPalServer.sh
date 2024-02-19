@@ -262,11 +262,11 @@ while true; do
                     break
                 fi
             done
-            sed -i "s/DIS/EN/" ../backups/config.json
-            sed -i "s/RMU/$remote_username/" ../backups/config.json
-            sed -i "s/PRK/$private_key/" ../backups/config.json
-            sed -i "s/RMH/$remote_host/" ../backups/config.json
-            sed -i "s/RMP/$remote_path/" ../backups/config.json
+            sed -i "s/NO/EN/" ./config.sh
+            sed -i "s/RMU/$remote_username/" ./config.sh
+            sed -i "s/PRK/$private_key/" ./config.sh
+            sed -i "s/RMH/$remote_host/" ./config.sh
+            sed -i "s/RMP/$remote_path/" ./config.sh
             ;;
         no|No|NO|n|N)
             echo "Remote backup will not be setup."
