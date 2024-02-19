@@ -75,13 +75,13 @@ is_valid_ipv4() {
     fi
 }
 while true; do
-    read -p -r "Please enter an IPv4 address: " ip
+    read -p "Please enter an IPv4 address: " ip
     if is_valid_ipv4 "$ip"; then
         break
     fi
 done
 while true; do
-    read -p -r "Enter the server port (default: 8211): " server_port 
+    read -p "Enter the server port (default: 8211): " server_port 
     if [[ "$server_port" =~ ^[0-9]+$ ]] && [ "$server_port" -ge 1024 ] && [ "$server_port" -le 65535 ]; then
         break
     fi
@@ -89,13 +89,13 @@ done
 
 # Configure server settings
 while true; do
-    read -p -r "Enter the server name: " server_name
+    read -p "Enter the server name: " server_name
     if [ -n "$server_name" ]; then
         break
     fi
 done
 while true; do
-    read -p -r "Enter the server description: " server_description
+    read -p "Enter the server description: " server_description
     if [ -n "$server_description" ]; then
         break
     fi
@@ -125,13 +125,13 @@ done
 
 # Configure gameplay settings
 while true; do
-    read -p -r "Enter the server max players (1-32): " server_max_players
+    read -p "Enter the server max players (1-32): " server_max_players
     if [[ "$server_max_players" =~ ^[0-9]+$ ]] && [ "$server_max_players" -ge 1 ] && [ "$server_max_players" -le 32 ]; then
         break
     fi
 done
 while true; do
-    read -p -r "Select death penalty (dropAll(1), dropEquipmentAndItem(2), dropOnlyItem(3), dropNothing(4)): " death_penalty
+    read -p "Select death penalty (dropAll(1), dropEquipmentAndItem(2), dropOnlyItem(3), dropNothing(4)): " death_penalty
     case $death_penalty in
         1)
             death_penalty="All"
@@ -156,13 +156,13 @@ while true; do
     fi
 done
 while true; do
-    read -p -r "Change xp rate (default: 1): " xp_rate
+    read -p "Change xp rate (default: 1): " xp_rate
     if [[ "$xp_rate" =~ ^[0-9]+$ ]]; then
         break
     fi
 done
 while true; do
-    read -p -r "Change Egg max hatch time (default: 72(in hour)): " egg_max_hatch_time
+    read -p "Change Egg max hatch time (default: 72(in hour)): " egg_max_hatch_time
     if [[ "$egg_max_hatch_time" =~ ^[1-9][0-9]*$ ]]; then
         break
     fi
@@ -170,7 +170,7 @@ done
 
 # Configure Rcon
 while true; do
-    read -p -r "Do you want to enable Rcon? (yes/no): " enable_rcon
+    read -p "Do you want to enable Rcon? (yes/no): " enable_rcon
     case $enable_rcon in
         yes|Yes|YES|y|Y)
             enable_rcon=true
@@ -184,7 +184,7 @@ while true; do
 done
 if [ "$enable_rcon" = true ]; then
     while true; do
-        read -p -r "Enter the Rcon port (default: 25575): " rcon_port 
+        read -p "Enter the Rcon port (default: 25575): " rcon_port 
         if [[ "$rcon_port" =~ ^[0-9]+$ ]] && [ "$rcon_port" -ne "$server_port" ] && [ "$rcon_port" -ge 1024 ] && [ "$rcon_port" -le 65535 ]; then
             break
         fi
@@ -220,7 +220,7 @@ find "$directory" -type f -name '*.sh' ! -name "$exclude_file" -exec chmod +x {}
 
 ########### Setup backup ###########
 while true; do
-    read -p -r "Do you want to backup your server to a remote storage ? (yes/no): " setup_backup
+    read -p "Do you want to backup your server to a remote storage ? (yes/no): " setup_backup
     case $setup_backup in
         yes|Yes|YES|y|Y)
             echo "Checking if dependencies are installed..."
@@ -239,25 +239,25 @@ while true; do
                 mkdir "$HOME"/backups
             fi
             while true; do
-                read -p -r"Enter the remote username: " remote_username
+                read -p"Enter the remote username: " remote_username
                 if [ -n "$remote_username" ]; then
                     break
                 fi
             done
             while true; do
-                read -p -s -r "Enter the path to the private key for ssh: " private_key
+                read -p -s "Enter the path to the private key for ssh: " private_key
                 if [ -n "$private_key" ]; then
                     break
                 fi
             done
             while true; do
-                read -p -r "Enter the remote host IP: " remote_host
+                read -p "Enter the remote host IP: " remote_host
                 if [ -n "$remote_host" ]; then
                     break
                 fi
             done
             while true; do
-                read -p -r "Enter remote Path" remote_path
+                read -p "Enter remote Path" remote_path
                 if [ -n "$remote_path" ]; then
                     break
                 fi
@@ -279,7 +279,7 @@ done
 
 ########### Setup maintenance automation ###########
 while true; do
-    read -p -r "Do you want to setup the server maintenance automation ? (yes/no): " setup_automation
+    read -p  "Do you want to setup the server maintenance automation ? (yes/no): " setup_automation
     case $setup_automation in
         yes|Yes|YES|y|Y)
             echo "Setting up automation..."
@@ -318,7 +318,7 @@ screen -dmS PalServer palworld
 echo "Palworld server is now running"
 
 ########### Install bot ###########
-read -p -r "Do you want to install the discord bot? (yes/no): " install_bot
+read -p  "Do you want to install the discord bot? (yes/no): " install_bot
 case $install_bot in
     yes|Yes|YES|y|Y)
         echo "Starting installation..."

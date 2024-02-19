@@ -21,7 +21,7 @@ echo "*/5 * * * * $check_process" | crontab -
 
 ########### Setup cron schedule ###########
 while true; do   
-    read -p -r "Enter the cron schedule (in the format: minute hour day_of_month month day_of_week => example: 0 3 * * * every day at 3:00 AM): " cron_schedule
+    read -p  "Enter the cron schedule (in the format: minute hour day_of_month month day_of_week => example: 0 3 * * * every day at 3:00 AM): " cron_schedule
     # Validate the cron schedule
     if [[ ! $cron_schedule =~ ^[0-9*,/-]+\s+[0-9*,/-]+\s+[0-9*,/-]+\s+[0-9*,/-]+\s+[0-9*,/-]+$ ]]; then
         echo "Invalid cron schedule format. Please enter a valid cron schedule."
