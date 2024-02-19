@@ -8,37 +8,37 @@
 # Usage: sudo ./setupPalServer.sh
 
 ########### Check if the script is run as root ###########
-if [ "$EUID" -ne 0 ]
-then
-	echo "Usage: sudo ./setupBot.sh"
-	echo "Run with sudo or as root"
-	exit
-fi
+#if [ "$EUID" -ne 0 ]
+#then
+#	echo "Usage: sudo ./setupBot.sh"
+#	echo "Run with sudo or as root"
+#	exit
+#fi
 
 ########### Install create steam user ###########
-username="steam"
-if id "$username" &>/dev/null; then
-    echo "User $username exists."
-    usermod -aG sudo steam
-    echo
-else
-    echo "User $username does not exist."
-    echo "Creating the user $username..."
-    while [ "$password" != "$confirm_password" ]; do
-        read -s -p "Enter the password for the steam user: " password
-        echo
-        read -s -p "Confirm the password: " confirm_password
-        echo
-        if [ "$password" != "$confirm_password" ]; then
-            echo "Passwords do not match"
-            exit
-        fi
-    done
-    adduser steam
-    usermod -aG sudo steam
-fi
-su -l steam
-cd /home/steam
+#username="steam"
+#if id "$username" &>/dev/null; then
+#    echo "User $username exists."
+#    usermod -aG sudo steam
+#    echo
+#else
+#    echo "User $username does not exist."
+#    echo "Creating the user $username..."
+#    while [ "$password" != "$confirm_password" ]; do
+#        read -s -p "Enter the password for the steam user: " password
+#        echo
+#        read -s -p "Confirm the password: " confirm_password
+#        echo
+#        if [ "$password" != "$confirm_password" ]; then
+#            echo "Passwords do not match"
+#            exit
+#        fi
+#    done
+#    adduser steam
+#    usermod -aG sudo steam
+#fi
+#su -l steam
+#cd /home/steam
 
 ########### Install steamcmd ###########
 sudo add-apt-repository multiverse
