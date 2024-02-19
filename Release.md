@@ -3,6 +3,7 @@
 # 0.1.4.1
 
 - Add more log to the cron task
+- Automate the server's restart in case of crash
 
 ## 0.1.4
 
