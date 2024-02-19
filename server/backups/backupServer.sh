@@ -19,15 +19,22 @@ source "$(dirname "$0")/../../log.sh"
 source "$(dirname "$0")/../config.sh"
 
 ########### Backup server local###########
-logMessage "Starting backup..."
+logMessage "INFO" "Starting backup..."
 tar -czf "${backups}/backup_${date}.tar.gz" -C "${palworld}" .
-logMessage "Backup of ${palworld} completed at ${backups}/backup_${date}.tar.gz"
+logMessage "INFO" "Backup of ${palworld} completed at ${backups}/backup_${date}.tar.gz"
 
 ########### Achive remotely ###########
 if [ "$REMOTE_ENABLED" = "EN" ]; then
-    logMessage "Start sending the backup to the remote server..."
-    scp -i "$PRIVATE_KEY" "$backups/backup_${date}.tar.gz" "$REMOTE_USERNAME@$REMOTE_HOST:$REMOTE_PATH"
+    logMessage "INFO" "Start sending the backup to the remote server..."
+    output=$(scp -i "$PRIVATE_KEY" "$backups/backup_${date}.tar.gz" "$REMOTE_USERNAME@$REMOTE_HOST:$REMOTE_PATH")
+    exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        logMessage "ERROR" "Error sending the backup to the remote server: $output"
+        exit 1
+    else
+        logMessage "INFO" "Backup sent to the remote server."
+    fi
 else
-    logMessage "Remote backup is not enabled. Exiting..."
+    logMessage "INFO" "Remote backup is not enabled. Exiting..."
     exit
 fi

@@ -14,9 +14,16 @@ source "$(dirname "$0")/../../log.sh"
 process_name="PalServer.sh"
 
 if pgrep "$process_name" >/dev/null; then
-    logMessage "The process $process_name is running."
+    logMessage "INFO" "The process $process_name is running."
 else
-    logMessage "The process $process_name is not running."
-    logMessage "Restarting the server..."
-    # Restart the server in a screen session
+    logMessage "INFO" "The process $process_name is not running."
+    logMessage "INFO" "Restarting the server..."
+    output=$(screen -dmS PalServer palworld)
+    exit_code=$?
+    if [ $exit_code -ne 0 ]; then
+        logMessage "ERROR" "Error starting the server: $output"
+        exit 1
+    else 
+        logMessage "INFO" "Palworld server is now running"
+    fi
 fi
