@@ -75,9 +75,10 @@ while true; do
 done
 
 # Prompt the user for server port until a valid one is entered
+port_regex="^[0-9]+$"
 while true; do
     read -p "Please enter the server port (default: 8211): " port
-    if [[ "$port" =~ ^[0-9]+$ ]] && [ "$port" -ge 1024 ] && [ "$port" -le 65535 ]; then
+    if [[ "$port" =~ $port_regex ]] && [ "$port" -ge 1024 ] && [ "$port" -le 65535 ]; then
         break
     fi
 done
@@ -85,7 +86,7 @@ done
 # Prompt the user for Rcon port until a valid one is entered
 while true; do
     read -p "Please enter the Rcon port (default: 25575) : " rcon_port
-    if [[ "$rcon_port" =~ ^[0-9]+$ ]] && [ "$rcon_port" -ne "$port" ] && [ "$rcon_port" -ge 1024 ] && [ "$rcon_port" -le 65535 ]; then
+    if [[ "$rcon_port" =~ $port_regex ]] && [ "$rcon_port" -ne "$port" ] && [ "$rcon_port" -ge 1024 ] && [ "$rcon_port" -le 65535 ]; then
         break
     fi
 done
@@ -132,7 +133,7 @@ if [ "$enable_whitelist" = true ]; then
     # Prompt the user for whitelist check time until a valid one is entered
     while true; do
         read -p "Please enter the whitelist check time (in minutes): " whitelist_check_time
-        if [[ "$whitelist_check_time" =~ ^[0-9]+$ ]] && [ "$whitelist_check_time" -ge 1 ]; then
+        if [[ "$whitelist_check_time" =~ $penalty_regex ]] && [ "$whitelist_check_time" -ge 1 ]; then
             break
         fi
     done
