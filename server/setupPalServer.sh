@@ -23,7 +23,6 @@ username="steam"
 if id "$username" &>/dev/null; then
     echo "User $username exists."
     usermod -aG sudo steam
-    read -p -s "Enter the password for the steam user: " password
     echo
 else
     echo "User $username does not exist."
@@ -41,7 +40,7 @@ else
     adduser steam
     usermod -aG sudo steam
 fi
-su -u steam -c "echo steam:$password | chpasswd"
+su -u steam
 cd /home/steam
 
 ########### Install steamcmd ###########
@@ -270,6 +269,7 @@ while true; do
             ;;
         no|No|NO|n|N)
             echo "Remote backup will not be setup."
+            break
             ;;
         *)
             echo "Invalid input. Please enter 'yes' or 'no'."
