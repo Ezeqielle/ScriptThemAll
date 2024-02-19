@@ -104,7 +104,7 @@ sudo ./setupPalServer.sh
 - [X] Script for backups
 - [X] Create cron task to shutdown > backups > restart server (linux only)
 - [X] Automate server's update
-- [ ] Script for auto-restart
+- [X] Script for auto-restart
 - [X] Monitoring of the Ram usage
 - [ ] ~~Make the repo for windows too (.ps1 script)~~ (Check this repo for windows [YAPS](https://github.com/guzlad/YAPS))
 - [X] Log system for the scripts cron task
