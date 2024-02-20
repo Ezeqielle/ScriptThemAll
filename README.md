@@ -51,11 +51,15 @@ This script is used to install a palworld server and some other tools to manage 
   - update the server
   - ram threshold
   - auto-restart in case of crash
+- Webhook to redirect logs to discord
 
 </details>
 
 > [!WARNING]
 > To use the remote backup feature you need to have a remote server with ssh access by key not password
+
+>[!IMPORTANT]
+>If you want to use the webhook feature first read more about how to set it up on the [Webhook.md](./Webhook.md) documentation
 
 ## Requirements
 

@@ -1,5 +1,11 @@
 # Release notes
 
+## 1.1.0
+
+- Add webhook feature
+- Add webhook documentation
+- Rework the README.md
+
 ## 1.0.0
 
 - Add splash screen at startup
