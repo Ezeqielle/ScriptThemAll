@@ -30,7 +30,7 @@ else
     logMessage "INFO" "Ram usage exceeds threshold. Sending ARRCON commands to reboot the server..."
     echo "Shutdown $SHUTDOWN_TIMER The_system_has_exceeded_${RAM_THRESHOLD}_ram__usage_will_reboot_in_5_min" | $ARRCON_CONNECT
     else
-    logMessage "INFO" "Ram usage is below 80%. Current usage: $ram_usage%"
+    logMessage "INFO" "Ram usage is below $RAM_THRESHOLD. Current usage: $ram_usage%"
     logMessage "INFO" "Restart is not needed at this time"
     fi
 fi

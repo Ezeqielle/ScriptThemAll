@@ -19,3 +19,7 @@ RAM_THRESHOLD=75
 
 ########### Check new server update ###########
 LAST_UPDATE=13378465
+
+########### Webhook ###########
+WEBHOOK_ENABLED="NO"
+URL=""
