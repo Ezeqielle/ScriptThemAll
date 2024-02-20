@@ -3,8 +3,8 @@
 # Name: setupBot.sh
 # Description: This script installs Node.js and sets up the bot
 # Author: Ezeqielle
-# Version: 0.1.2
-# Last updated: 2024-02-07
+# Version: 1.0.0
+# Last updated: 2024-02-20
 # Usage: sudo ./setupBot.sh
 
 ########### Check if the script is run as root ###########

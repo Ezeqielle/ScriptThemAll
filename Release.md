@@ -1,5 +1,12 @@
 # Release notes
 
+## 1.0.0
+
+- Add splash screen at startup
+- Clean the code
+- Update info comments
+- Update the README.md
+
 ## 0.1.4.1
 
 - Add more log to the cron task

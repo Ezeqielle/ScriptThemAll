@@ -3,8 +3,8 @@
 # Name: serverMaintenance.sh
 # Description: This script will do the maintenance of the Palworld server that includes updating the server, restarting the server and backing up its data
 # Author: Ezeqielle
-# Version: 0.0.1
-# Last updated: 2024-02-12
+# Version: 1.0.0
+# Last updated: 2024-02-20
 # Usage: sudo ./serverMaintenance.sh
 
 ########### Implement the log file ###########

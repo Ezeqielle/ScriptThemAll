@@ -3,8 +3,8 @@
 # Name: cronSetup.sh
 # Description: This script setup cron jobs for the Palworld server
 # Author: Ezeqielle
-# Version: 0.0.1
-# Last updated: 2024-02-12
+# Version: 1.0.0
+# Last updated: 2024-02-20
 # Usage: sudo ./cronSetup.sh
 
 ########### Setup vars ###########

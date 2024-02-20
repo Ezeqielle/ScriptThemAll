@@ -66,10 +66,10 @@ This script is used to install a palworld server and some other tools to manage 
 ## Installation
 
 >[!CAUTION]
-> Don't run the script as root, run it with your user and use sudo
+> Don't run the script as root, run it with your user that can use sudo
 
 > [!NOTE]
-> All automation part can be activate later by running the **activate** script for this feature *(take a look at the [FAQ](#faq) for more info)*
+> Remote backup part can be activate later by running the **activate** script for this feature *(take a look at the [FAQ](#faq) for more info)*
 
 ```bash
 git clone https://github.com/Ezeqielle/ScriptThemAll.git
@@ -77,6 +77,13 @@ cd ScriptThemAll/server
 chmod +x setupPalServer.sh
 sudo ./setupPalServer.sh
 ```
+
+>[!TIP]
+>If you got an error about the interpreter run this command before in the root folder of the project
+>```bash
+>find . -type f -name '*.sh' -exec sed -i 's/\r$//' {} \;
+>```
+>That will remove the carriage return from the script files that can cause the issue
 
 <details>
 <summary><b><h2>FAQ<h2></b></summary>
@@ -90,11 +97,6 @@ sudo ./setupPalServer.sh
 
 > Don't worry, you can use the local backup feature that is implemented during the installation
 
-- I don't have setup the auto-update feature, how can I do it?
-
-> You just need to run the activateAutoUpdate script that can be found here
-> `~/ScriptThemAll/server/automation/cronScript/activateAutoUpdate.sh`
-
 </details>
 
 ## TODO
@@ -106,8 +108,8 @@ sudo ./setupPalServer.sh
 - [X] Automate server's update
 - [X] Script for auto-restart
 - [X] Monitoring of the Ram usage
-- [ ] ~~Make the repo for windows too (.ps1 script)~~ (Check this repo for windows [YAPS](https://github.com/guzlad/YAPS))
 - [X] Log system for the scripts cron task
+- [ ] ~~Make the repo for windows too (.ps1 script)~~ (Check this repo for windows [YAPS](https://github.com/guzlad/YAPS))
 
 ## Credits
 

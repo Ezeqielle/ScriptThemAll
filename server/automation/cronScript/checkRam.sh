@@ -3,8 +3,8 @@
 # Name: checkRam.sh
 # Description: This script checks the memory usage of the Palworld server and restarts it if the usage exceeds a certain threshold
 # Author: Ezeqielle
-# Version: 0.0.1
-# Last updated: 2024-02-13
+# Version: 1.0.0
+# Last updated: 2024-02-20
 # Usage: sudo ./checkRam.sh
 
 ########### Get ram data ###########

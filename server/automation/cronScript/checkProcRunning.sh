@@ -3,8 +3,8 @@
 # Name: checkProcRunning.sh
 # Description: This script check is palworld server is running
 # Author: Ezeqielle
-# Version: 0.0.1
-# Last updated: 2024-02-13
+# Version: 1.0.0
+# Last updated: 2024-02-20
 # Usage: sudo ./checkProcRunning.sh
 
 ########### Implement the log file ###########

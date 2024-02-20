@@ -3,8 +3,8 @@
 # Name: checkUpdates.sh
 # Description: This script checks for updates on database and update the server if needed
 # Author: Ezeqielle
-# Version: 0.0.1
-# Last updated: 2024-02-13
+# Version: 1.0.0
+# Last updated: 2024-02-20
 # Usage: sudo ./checkUpdates.sh
 
 ########### Implement the log file ###########

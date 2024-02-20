@@ -3,8 +3,8 @@
 # Name: setupPalServer.sh
 # Description: This script install a Palworld server and all its dependencies
 # Author: Ezeqielle
-# Version: 0.1.3
-# Last updated: 2024-02-13
+# Version: 1.0.0
+# Last updated: 2024-02-20
 # Usage: sudo ./setupPalServer.sh
 
 ########### Check if the script is run as root ###########

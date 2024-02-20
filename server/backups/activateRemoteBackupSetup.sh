@@ -3,8 +3,8 @@
 # Name: activateRemoteBackupSetup.sh
 # Description: Setup remote backup for the Palworld server (not in the server setup process)
 # Author: Ezeqielle
-# Version: 0.0.1
-# Last updated: 2024-02-12
+# Version: 1.0.0
+# Last updated: 2024-02-20
 # Usage: sudo ./activateRemoteBackupSetup.sh
 
 ########### Setup backup ###########
