@@ -7,6 +7,21 @@
 # Last updated: 2024-02-13
 # Usage: sudo ./setupPalServer.sh
 
+########### Check if the script is run as root ###########
+clear
+echo "   _____              _         _     _______  _                                  _       _      ";
+echo "  / ____|            (_)       | |   |__   __|| |                          /\    | |     | |     ";
+echo " | (___    ___  _ __  _  _ __  | |_     | |   | |__    ___  _ __ ___      /  \   | |     | |     ";
+echo "  \___ \  / __|| '__|| || '_ \ | __|    | |   | '_ \  / _ \| '_ \` _ \    / /\ \  | |     | |     ";
+echo "  ____) || (__ | |   | || |_) || |_     | |   | | | ||  __/| | | | | |  / ____ \ | |____ | |____ ";
+echo " |_____/  \___||_|   |_|| .__/  \__|    |_|   |_| |_| \___||_| |_| |_| /_/    \_\|______||______|";
+echo "                        | |                                                                      ";
+echo "                        |_|                                                                      ";
+echo ""
+echo "This script will install a Palworld server and all its dependencies."
+echo ""
+echo ""
+
 ########### Install steamcmd ###########
 sudo add-apt-repository multiverse
 sudo dpkg --add-architecture i386
