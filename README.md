@@ -75,7 +75,7 @@ This script is used to install a palworld server and some other tools to manage 
 git clone https://github.com/Ezeqielle/ScriptThemAll.git
 cd ScriptThemAll/server
 chmod +x setupPalServer.sh
-sudo ./setupPalServer.sh
+./setupPalServer.sh
 ```
 
 >[!TIP]
